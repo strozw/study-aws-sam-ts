@@ -1,1 +1,1 @@
-# study-aws-sam-ts
+# Study AWS SAM with Typescript
