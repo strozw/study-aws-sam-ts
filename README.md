@@ -2,15 +2,14 @@
 
 ## development
 
-1. build typescript
+1. watch build typescript
 
-  * watch build
-
-    ```sh
-    npm run watch
-    ```
+  ```sh
+  npm run watch
+  ```
 
 2. Start api in local
+
   ```sh
   npm run start
   ```
@@ -19,9 +18,9 @@
 
 1. build typescript
 
-    ```sh
-    npm run build
-    ```
+  ```sh
+  npm run build
+  ```
 
 2. sam package build
 
