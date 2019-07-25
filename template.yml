@@ -6,9 +6,18 @@ Description: study-aws-sam-ts
 Globals:
   Function:
     Timeout: 3
+    AutoPublishAlias: staging
+
+Parameters:
+  Stage:
+    Type: String
+    AllowedValues:
+      - staging
+      - production
+    Default: staging
 
 Resources:
-  StudyAWSSAMTSFunction:
+  AppFunc:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       CodeUri: dist/
@@ -36,15 +45,15 @@ Resources:
     #             - AttributeName: Id
     #               KeyType: HASH
 
-# Outputs:
-#     HelloWorldApi:
-#       Description: "API Gateway endpoint URL for Prod stage for Hello World function"
-#       Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
+Outputs:
+  AppApi:
+    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
 
-#     HelloWorldFunction:
-#       Description: "Hello World Lambda Function ARN"
-#       Value: !GetAtt HelloWorldFunction.Arn
+  AppFunc:
+    Description: "Hello World Lambda Function ARN"
+    Value: !GetAtt AppFunc.Arn
 
-#     HelloWorldFunctionIamRole:
-#       Description: "Implicit IAM Role created for Hello World function"
-#       Value: !GetAtt HelloWorldFunctionRole.Arn
+  AppFuncIamRole:
+    Description: "Implicit IAM Role created for Hello World function"
+    Value: !GetAtt AppFunc.Arn

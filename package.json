@@ -13,8 +13,10 @@
     "@types/node": "^12.6.8",
     "@types/webpack": "^4.32.1",
     "chai": "^4.1.2",
+    "dotenv": "^8.0.0",
     "glob": "^7.1.4",
     "mocha": "^5.1.1",
+    "shx": "^0.3.2",
     "ts-loader": "^6.0.4",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3",
@@ -29,7 +31,9 @@
     "watch": "NODE_ENV=development webpack --watch",
     "build": "webpack",
     "start": "sam local start-api -p 3001 -t ./template.yml",
-    "sam:package": "sam package --template-file ./template.yml --s3-bucket $SAM_S3_BUCKET_NAME --output-template-file packaged.yml",
-    "sam:deploy": "sam deploy --template-file packaged.yml --stack-name study-aws-sam-ts  --capabilities CAPABILITY_IAM"
+    "sam:package": "shx rm -f packaged.yml && sam package --template-file ./template.yml --s3-bucket $SAM_S3_BUCKET --output-template-file packaged.yml",
+    "deploy:sam": "sam deploy --template-file packaged.yml --stack-name study-aws-sam-ts --capabilities CAPABILITY_IAM",
+    "deploy:info": "aws cloudformation describe-stacks --stack-name study-aws-sam-ts",
+    "deploy": "npm run deploy:sam && npm run deploy:info"
   }
 }

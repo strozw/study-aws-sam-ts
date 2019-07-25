@@ -25,7 +25,7 @@
 2. sam package build
 
   ```
-  env S3_BUCKET=YOUR_BUCKET_NAME npm run sam:package
+  env SAM_S3_BUCKET=YOUR_BUCKET_NAME npm run sam:package
   ```
 
 3. sam deploy
@@ -33,3 +33,8 @@
   ```
   npm run sam:deploy
   ```
+
+## TODO
+
+* [ ] multi stage
+* [ ] use dynamodb
