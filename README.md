@@ -1,5 +1,25 @@
 # Study AWS SAM with Typescript
 
+## Requirements
+
+https://docs.aws.amazon.com/ja_jp/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html
+
+### on mac
+
+* aws cli
+
+  ```sh
+  brew install awscli
+  aws configure
+  ```
+
+* aws sam cli
+
+  ```sh
+  brew tap aws/tap
+  brew install aws-sam-cli
+  ```
+
 ## development
 
 1. watch build typescript
