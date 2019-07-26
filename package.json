@@ -28,6 +28,13 @@
     "test": "mocha tests/unit/",
     "watch": "NODE_ENV=development webpack --watch",
     "build": "webpack",
-    "start": "sam local start-api -p 3001 -t ./template.yml"
+    "start": "sam local start-api -p 3001 -t ./template.yml --parameter-overrides LocalDynamoDbHost=$LOCAL_DYNAMO_DB_HOST",
+    "sam:package": "shx rm -f packaged.yml && sam package --template-file ./template.yml --s3-bucket $SAM_S3_BUCKET --output-template-file packaged.yml",
+    "deploy:stg:sam": "sam deploy --template-file packaged.yml --stack-name study-aws-sam-ts-stg --capabilities CAPABILITY_IAM --parameter-overrides Env=staging",
+    "deploy:stg:info": "aws cloudformation describe-stacks --stack-name study-aws-sam-ts-stg",
+    "deploy:stg": "npm run deploy:stg:sam && npm run deploy:stg:info",
+    "deploy:prod:sam": "sam deploy --template-file packaged.yml --stack-name study-aws-sam-ts --capabilities CAPABILITY_IAM  --parameter-overrides Env=production",
+    "deploy:prod:info": "aws cloudformation describe-stacks --stack-name study-aws-sam-ts",
+    "deploy:prod": "npm run deploy:prod:sam && npm run deploy:prod:info"
   }
 }

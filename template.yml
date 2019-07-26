@@ -5,7 +5,17 @@ Description: study-aws-sam-ts
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
-    Timeout: 3
+    Timeout: 10
+
+Parameters:
+  Env:
+    Type: String
+    AllowedValues:
+      - staging
+      - production
+    Default: staging
+  LocalDynamoDbHost:
+    Type: String
 
 Resources:
   StudyAWSSAMTSFunction:
@@ -14,9 +24,10 @@ Resources:
       CodeUri: dist/
       Handler: app.lambdaHandler
       Runtime: nodejs8.10
-      # Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
-      #   Variables:
-      #   PARAM1: VALUE
+      Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
+        Variables:
+          NODE_ENV: !Ref Env
+          LOCAL_DYNAMO_DB_HOST: !Ref LocalDynamoDbHost
       Events:
         HelloWorld:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api

@@ -17,5 +17,5 @@
 
 2. Start api in local
   ```sh
-  npm run start
+  env LOCAL_DYNAMO_DB_HOST=YOUR_LOCAL_DYNAMO_DB_HOST npm run start
   ```

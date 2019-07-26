@@ -1,9 +1,9 @@
 import Webpack from 'webpack'
-import path from 'path'
 import { sync } from 'glob'
+import { resolve } from 'path'
 
-const srcPath = path.resolve(__dirname, './src')
-const distPath = path.resolve(__dirname, './dist')
+eonst srcPath = resolve(__dirname, './src')
+const distPath = resolve(__dirname, './dist')
 
 const entryResolver: Webpack.EntryFunc = () => {
   const entries: Webpack.Entry = {}
