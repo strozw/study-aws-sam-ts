@@ -50,11 +50,17 @@ https://docs.aws.amazon.com/ja_jp/serverless-application-model/latest/developerg
 
 3. sam deploy
 
+  * to staging
   ```
-  npm run sam:deploy
+  npm run deploy:stg
+  ```
+
+  * to production
+  ```
+  npm run deploy:prod
   ```
 
 ## TODO
 
-* [ ] multi stage
+* [x] multi stage
 * [ ] use dynamodb
