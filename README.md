@@ -2,9 +2,12 @@
 
 ## Requirements
 
+* aws cli
+* aws sam cli
+
 https://docs.aws.amazon.com/ja_jp/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html
 
-### on mac
+### Instrations for mac
 
 * aws cli
 
@@ -21,6 +24,18 @@ https://docs.aws.amazon.com/ja_jp/serverless-application-model/latest/developerg
   ```
 
 ## development
+
+0. create docker network
+
+  ```sh
+  docker network create lambda-local
+  ```
+
+1. dockr-compose up
+
+  ```sh
+  docker-compose up
+  ```
 
 1. watch build typescript
 
