@@ -11,9 +11,10 @@ Parameters:
   Env:
     Type: String
     AllowedValues:
+      - development
       - staging
       - production
-    Default: staging
+    Default: development
   LocalDynamoDbHost:
     Type: String
 

@@ -130,3 +130,4 @@ $RECYCLE.BIN/
 
 dist/*
 packaged.yml
+data/shared-local-instance.db
