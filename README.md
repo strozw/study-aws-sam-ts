@@ -25,6 +25,18 @@ https://docs.aws.amazon.com/ja_jp/serverless-application-model/latest/developerg
 
 ## development
 
+0. create docker network
+
+  ```sh
+  docker network create lambda-local
+  ```
+
+1. dockr-compose up
+
+  ```sh
+  docker-compose up
+  ```
+
 1. watch build typescript
 
   ```sh
@@ -34,7 +46,7 @@ https://docs.aws.amazon.com/ja_jp/serverless-application-model/latest/developerg
 2. Start api in local
 
   ```sh
-  env LOCAL_DYNAMO_DB_HOST=YOUR_LOCAL_DYNAMO_DB_HOST npm run start
+  npm run start
   ```
 
 ## deploy
