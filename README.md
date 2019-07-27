@@ -2,9 +2,12 @@
 
 ## Requirements
 
+* aws cli
+* aws sam cli
+
 https://docs.aws.amazon.com/ja_jp/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html
 
-### on mac
+### Instrations for mac
 
 * aws cli
 
