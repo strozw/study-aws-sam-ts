@@ -10,14 +10,14 @@ services:
       - ./data:/data
     networks:
       - lambda-local
-    command: ["-jar", "DynamoDBLocal.jar", "-dbPath", "/data", "-port", "8002", "-sharedDb"]
+    command: ["-jar", "DynamoDBLocal.jar", "-dbPath", "/data", "-port", "8000", "-sharedDb"]
 
-  dynamodblocaladmin:
-    image: instructure/dynamo-local-admin
+  dynamodbdmin:
+    image: aaronshaf/dynamodb-admin
     ports:
       - 8001:8001
     environment:
-      DYNAMO_ENDPOINT: http://lambda-local:8000
+      DYNAMO_ENDPOINT: http://dynamodb-local:8000
     depends_on:
       - dynamodblocal
     networks:

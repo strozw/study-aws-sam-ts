@@ -5,7 +5,7 @@ const options: AWS.DynamoDB.Types.ClientConfiguration = {
 }
 
 if (process.env.NODE_ENV === 'development') {
-  options.endpoint = 'http://lambda-local:8000'
+  options.endpoint = 'http://dynamodb-local:8000'
 }
 
 const dynamodb = new AWS.DynamoDB.DocumentClient(options)
