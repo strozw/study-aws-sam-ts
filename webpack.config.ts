@@ -15,15 +15,12 @@ const entryResolver: Webpack.EntryFunc = () => {
     entries[key] = target
   })
 
-  console.log(entries)
-
   return entries
 }
 
 const config: Webpack.Configuration = {
   target: 'node',
-  // mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-  mode: 'production',
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   resolve: {
     extensions: ['.ts', '.js']
   },
