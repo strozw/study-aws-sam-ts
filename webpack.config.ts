@@ -2,7 +2,7 @@ import Webpack from 'webpack'
 import { sync } from 'glob'
 import { resolve } from 'path'
 
-eonst srcPath = resolve(__dirname, './src')
+const srcPath = resolve(__dirname, './src')
 const distPath = resolve(__dirname, './dist')
 
 const entryResolver: Webpack.EntryFunc = () => {
@@ -22,7 +22,10 @@ const config: Webpack.Configuration = {
   target: 'node',
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js'],
+    alias: {
+      src: srcPath,
+    }
   },
   entry: entryResolver,
   output: {
