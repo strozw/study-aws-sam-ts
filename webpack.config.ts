@@ -1,12 +1,13 @@
-import Webpack from 'webpack'
+import webpack from 'webpack'
 import { sync } from 'glob'
 import { resolve } from 'path'
+import config from 'config'
 
 const srcPath = resolve(__dirname, './src')
 const distPath = resolve(__dirname, './dist')
 
-const entryResolver: Webpack.EntryFunc = () => {
-  const entries: Webpack.Entry = {}
+const entryResolver: webpack.EntryFunc = () => {
+  const entries: webpack.Entry = {}
   const targets: string[] = sync(`${srcPath}/handlers/**/*.ts`)
   const keyRule = new RegExp(`${srcPath}/handlers/(.+)\.ts`)
 
@@ -18,7 +19,7 @@ const entryResolver: Webpack.EntryFunc = () => {
   return entries
 }
 
-const config: Webpack.Configuration = {
+const webpackConfig: webpack.Configuration = {
   target: 'node',
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   resolve: {
@@ -41,7 +42,13 @@ const config: Webpack.Configuration = {
         loader: 'ts-loader'
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      //double stringify because node-config expects this to be a string
+      CONFIG: JSON.stringify(config),
+    }),
+  ]
 }
 
-export default config
+export default webpackConfig
