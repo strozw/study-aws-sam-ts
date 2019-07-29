@@ -1,12 +1,11 @@
 import AWS from 'aws-sdk'
 
 const options: AWS.DynamoDB.Types.ClientConfiguration = {
-  apiVersion: '2012-08-10'
+  apiVersion: '2012-08-10',
+  ...CONFIG.dynamodb
 }
 
-if (process.env.NODE_ENV === 'development') {
-  options.endpoint = 'http://dynamodb-local:8000'
-}
+console.log(options)
 
 const dynamodb = new AWS.DynamoDB.DocumentClient(options)
 

@@ -131,3 +131,4 @@ $RECYCLE.BIN/
 dist/*
 packaged.yml
 data/shared-local-instance.db
+skel_dynamodb_create-table.json
