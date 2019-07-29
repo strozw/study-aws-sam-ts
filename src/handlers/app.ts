@@ -7,12 +7,12 @@ const url = 'http://checkip.amazonaws.com/'
 let response: any = { statusCode: 200, body: '' }
 
 const handler: Handler = async (event, context) => {
-  await dynamodb.scan({ TableName: 'test_table' }, (error, data) => {
-    response = {
-      statusCode: 200,
-      body: JSON.stringify(data)
-    }
-  }).promise()
+  const result = await dynamodb.scan({ TableName: 'test_table' }).promise()
+
+  response = {
+    statusCode: 200,
+    body: JSON.stringify(result)
+  }
 
   return response
 }
